@@ -6,8 +6,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+<<<<<<< Updated upstream
         <p>This is commit by eva
           Edit <code>src/App.js</code> and save to reload.
+=======
+        <p>This is commit by eva</p>
+        <p>This is commit by shuaishuai again
+           班长是大腿，好好抱大腿
+
+>>>>>>> Stashed changes
         </p>
         <a
           className="App-link"
