@@ -1,12 +1,6 @@
 # Added 1 line by Tardigrade on September 1, 2021
 # Added by Tardigrade too on Sep 2, 2021
 
-## Added 1 line by shuaishuai
-
-## Added 1 line by shuaishuai
-
-## Added 1 line by shuaishuai
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
