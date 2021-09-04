@@ -9,6 +9,9 @@ function App() {
         <p>This is commit by eva</p>
         <p>This is commit by eva again</p>
         <p>This is commit by shuaishuai again</p>
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p> This is commit by Ada.</p>
         <p>This is commit by shuaishuai 233333333</p>
         <a
           className="App-link"
