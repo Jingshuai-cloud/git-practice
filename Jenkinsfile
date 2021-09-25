@@ -26,10 +26,7 @@ pipeline {
             sh 'npm run build'
           }
         }
-    stage('check branch name') {
-      steps {
-       echo ${env.BRANCH_NAME}
-      }
+        
       }
     }
 
