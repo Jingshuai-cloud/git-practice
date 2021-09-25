@@ -11,7 +11,7 @@ pipeline {
   stages {
       stage('Check branch name') {
           steps {
-            echo env.BRANCH_NAME
+            echo BRANCH_NAME
           }
         }
    //  stage('Install Packages') {
