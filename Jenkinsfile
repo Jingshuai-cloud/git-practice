@@ -9,33 +9,28 @@ pipeline {
     CI = 'true'
   }
   stages {
-      stage('Check branch name') {
+    stage('Install Packages') {
+      steps {
+        sh 'npm install'
+      }
+    }
+    stage('Test and Build') {
+      parallel {
+        stage('Run Tests') {
           steps {
-            echo BRANCH_NAME
+            sh 'npm run test'
           }
         }
-   //  stage('Install Packages') {
-   //    steps {
-   //      sh 'npm install'
-   //    }
-   //  }
-   //  stage('Test and Build') {
-   //    parallel {
-   //      stage('Run Tests') {
-   //        steps {
-   //          sh 'npm run test'
-   //        }
-   //      }
-   //      stage('Create Build Artifacts') {
-   //        steps {
-   //          sh 'npm run build'
-   //        }
-   //      }
+        stage('Create Build Artifacts') {
+          steps {
+            sh 'npm run build'
+          }
+        }
         
-   //    }
-   //  }
-
-stage('Production') {
+      }
+    }
+    if(env.BRANCH_NAME == "main") {
+       stage('Production') {
   steps {
    input message: 'Deploy to production? (Click "Proceed" to continue)'
     withAWS(region:'ap-southeast-2',credentials:'aws-credentials') {
@@ -44,5 +39,6 @@ stage('Production') {
             }
           }
         }
+    }
     }
 }
