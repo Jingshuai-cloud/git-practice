@@ -9,26 +9,31 @@ pipeline {
     CI = 'true'
   }
   stages {
-    stage('Install Packages') {
-      steps {
-        sh 'npm install'
-      }
-    }
-    stage('Test and Build') {
-      parallel {
-        stage('Run Tests') {
+      stage('Check branch name') {
           steps {
-            sh 'npm run test'
+            echo env.BRANCH_NAME
           }
         }
-        stage('Create Build Artifacts') {
-          steps {
-            sh 'npm run build'
-          }
-        }
+   //  stage('Install Packages') {
+   //    steps {
+   //      sh 'npm install'
+   //    }
+   //  }
+   //  stage('Test and Build') {
+   //    parallel {
+   //      stage('Run Tests') {
+   //        steps {
+   //          sh 'npm run test'
+   //        }
+   //      }
+   //      stage('Create Build Artifacts') {
+   //        steps {
+   //          sh 'npm run build'
+   //        }
+   //      }
         
-      }
-    }
+   //    }
+   //  }
 
 stage('Production') {
   steps {
