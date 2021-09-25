@@ -30,6 +30,9 @@ pipeline {
     }
 
 stage('Production') {
+   when {
+          branch 'main'
+         }
   steps {
     withAWS(region:'ap-southeast-2',credentials:'aws-credentials') {
     s3Delete(bucket: 'jingshuai-react-sample', path:'**/*')
