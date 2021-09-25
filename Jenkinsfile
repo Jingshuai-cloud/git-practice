@@ -30,17 +30,17 @@ pipeline {
          }
          stage('Deploy to Production') {
                steps {
-               script {
-                  if (env.BRANCH_NAME == 'main') {
+                  script {
+                     if (env.BRANCH_NAME == 'main') {
                   input message: 'Deploy to production? (Click "Proceed" to continue)'
                   withAWS(region:'ap-southeast-2', credentials:'aws-credentials') {
-                        s3Delete(bucket: 'jingshuai-react-sample', path:'**/*')
-                        s3Upload(bucket: 'jingshuai-react-sample', workingDir:'build', includePathPattern:'**/*')
+                     s3Delete(bucket: 'jingshuai-react-sample', path:'**/*')
+                     s3Upload(bucket: 'jingshuai-react-sample', workingDir:'build', includePathPattern:'**/*')
                   }
                      } else {
-                  echo 'I execute elsewhere'
+                  echo 'only main can deploy'
+                     }
                   }
-               }
                }
          }
 
