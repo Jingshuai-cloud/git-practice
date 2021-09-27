@@ -1,10 +1,11 @@
 pipeline {
-   agent {
-      docker {
-         image 'node:12.18.3'
-         args '-p 3000:3000'
-      }
-   }
+   // agent {
+   //    docker {
+   //       image 'node:12.18.3'
+   //       args '-p 3000:3000'
+   //    }
+   // }
+   agent { dockerfile true }
    environment {
       CI = 'true'
    }
