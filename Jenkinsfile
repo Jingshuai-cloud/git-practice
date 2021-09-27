@@ -3,6 +3,7 @@ pipeline {
       docker {
          image 'node:12.18.3'
          args '-p 3000:3000'
+         RUN apt-get update
       }
    }
    environment {
@@ -36,7 +37,7 @@ pipeline {
              stage('Create S3 Bucket') {
                steps {
                   withAWS(region:'ap-southeast-2', credentials:'aws-credentials') {
-                           sh '/usr/local/bin/aws cloudformation deploy \
+                           sh 'aws cloudformation deploy \
                         --template-file git-practice.yml \
                         --stack-name git-practice-stack \
                         --parameter-overrides BucketName=jingshuai-git-practice'
