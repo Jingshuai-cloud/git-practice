@@ -28,19 +28,21 @@ pipeline {
          //    }
          //    }
          // }
-          stage('Validate CF syntax') {
-               steps {
-                  sh '/usr/local/bin/ aws cloudformation validate-template --template-body file://git-practice.yml'
-               }
-            }
-         //     stage('Create S3 Bucket') {
+         //  stage('Validate CF syntax') {
          //       steps {
-         //          sh 'aws cloudformation deploy \
-         //                --template-file git-practice.yml \
-         //                --stack-name git-practice-stack \
-         //                --parameter-overrides BucketName=jingshuai-git-practice'
+         //          sh '/usr/local/bin/ aws cloudformation validate-template --template-body file://git-practice.yml'
          //       }
          //    }
+             stage('Create S3 Bucket') {
+               steps {
+                  withAWS(region:'ap-southeast-2', credentials:'aws-credentials') {
+                           sh 'aws cloudformation deploy \
+                        --template-file git-practice.yml \
+                        --stack-name git-practice-stack \
+                        --parameter-overrides BucketName=jingshuai-git-practice'
+                  }
+               }
+            }
          // stage('Deploy to Production') {
          //       steps {
          //       script {
