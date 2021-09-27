@@ -36,7 +36,7 @@ pipeline {
              stage('Create S3 Bucket') {
                steps {
                   withAWS(region:'ap-southeast-2', credentials:'aws-credentials') {
-                           sh 'aws cloudformation deploy \
+                           sh '/usr/local/bin/aws cloudformation deploy \
                         --template-file git-practice.yml \
                         --stack-name git-practice-stack \
                         --parameter-overrides BucketName=jingshuai-git-practice'
