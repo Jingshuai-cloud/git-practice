@@ -3,7 +3,6 @@ pipeline {
       docker {
          image 'node:12.18.3'
          args '-p 3000:3000'
-         RUN apt-get update
       }
    }
    environment {
