@@ -25,7 +25,9 @@ pipeline {
          }
           stage('Validate CF syntax') {
                steps {
+                   withAWS(region:'ap-southeast-2', credentials:'aws-credentials') {
                   sh 'aws cloudformation validate-template --template-body file://git-practice.yml'
+                   }
                }
             }
              stage('S3 Bucket') {
